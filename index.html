@@ -1,1113 +1,277 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Manual instalación Opti OS 11</title>
-<link rel="shortcut icon" href="asset/images/favicon.ico" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Poppins',sans-serif;
-    background:#0f172a;
-    color:#f8fafc;
-    line-height:1.8;
-    overflow-x:hidden;
-}
-
-/* =========================
-NAVBAR
-========================= */
-
-.navbar{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:1000;
-    background:rgba(15,23,42,.88);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-.nav-container{
-    width:min(1200px,92%);
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:1rem 0;
-}
-
-.logo{
-    font-weight:700;
-    color:#38bdf8;
-    font-size:1.1rem;
-}
-
-.nav-links{
-    display:flex;
-    gap:1.4rem;
-    flex-wrap:wrap;
-}
-
-.nav-links a{
-    color:#cbd5e1;
-    text-decoration:none;
-    transition:.3s;
-    font-size:.95rem;
-}
-
-.nav-links a:hover{
-    color:#38bdf8;
-}
-
-/* =========================
-SECCIONES
-========================= */
-
-.manual-section{
-    padding:7rem 0;
-}
-
-.container{
-    width:min(1100px,92%);
-    margin:auto;
-}
-
-.section-box{
-    background:#1e293b;
-    border-radius:28px;
-    padding:3rem;
-    border:1px solid rgba(255,255,255,.05);
-    box-shadow:0 10px 40px rgba(0,0,0,.25);
-}
-
-/* =========================
-PORTADA
-========================= */
-/* =========================
-MENU HAMBURGUESA
-========================= */
-/* =========================
-MENU HAMBURGUESA
-========================= */
-
-.menu-toggle{
-    display:none;
-
-    background:none;
-    border:none;
-
-    color:white;
-
-    font-size:2rem;
-
-    cursor:pointer;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-    .menu-toggle{
-        display:block;
-    }
-
-    .nav-container{
-        position:relative;
-    }
-
-    .nav-links{
-
-        position:absolute;
-
-        top:100%;
-        left:0;
-
-        width:100%;
-
-        background:#0f172a;
-
-        flex-direction:column;
-
-        padding:1.5rem;
-
-        gap:1rem;
-
-        border-bottom:1px solid rgba(255,255,255,.08);
-
-        display:flex;
-
-        max-height:0;
-
-        overflow:hidden;
-
-        opacity:0;
-
-        pointer-events:none;
-
-        transition:
-        max-height .4s ease,
-        opacity .3s ease,
-        padding .3s ease;
-    }
-
-    .nav-links.active{
-
-        max-height:500px;
-
-        opacity:1;
-
-        pointer-events:auto;
-    }
-
-    .double-images,
-    .triple-images{
-        grid-template-columns:1fr;
-    }
-
-    .portada-title{
-        font-size:2.8rem;
-    }
-
-    .section-box{
-        padding:2rem;
-    }
-
-}
-
-.portada{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    background:
-    linear-gradient(rgba(2,6,23,.82),rgba(2,6,23,.94)),
-    url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
-
-    background-size:cover;
-    background-position:center;
-}
-
-.portada-content{
-    width:min(900px,95%);
-    text-align:center;
-}
-
-.portada-content p{
-    margin-bottom:1rem;
-    font-size:1.05rem;
-}
-
-.portada-title{
-    font-size:4rem;
-    font-weight:800;
-    margin:2rem 0;
-    line-height:1.1;
-}
-
-.hero-card{
-    margin-top:2rem;
-    background:rgba(30,41,59,.72);
-    border-radius:28px;
-    padding:2.5rem;
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.06);
-}
-
-/* =========================
-TEXTOS
-========================= */
-
-.section-title{
-    font-size:2.3rem;
-    margin-bottom:2rem;
-    color:#38bdf8;
-}
-
-.text-block p{
-    margin-bottom:1rem;
-}
-
-/* =========================
-CARDS
-========================= */
-
-.requirements-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1.5rem;
-    margin-top:2rem;
-}
-
-.info-card{
-    background:#0f172a;
-    padding:2rem;
-    border-radius:22px;
-    border:1px solid rgba(255,255,255,.05);
-    transition:.3s;
-}
-
-.info-card:hover{
-    transform:translateY(-6px);
-    border-color:rgba(56,189,248,.35);
-}
-
-.info-card h3{
-    color:#38bdf8;
-}
-
-/* =========================
-IMAGENES
-========================= */
-
-.image-placeholder img,
-.double-images img,
-.triple-images img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;          /* 🔹 Ajusta la altura automáticamente */
-    object-fit: contain;   /* 🔹 Muestra la imagen completa */
-    border-radius: 20px;
-    display: block;
-}
-#image-step2 img {
-    width: 100%;
-    max-height: 600px;
-    height: auto;          /* 🔹 Ajusta según proporción real */
-    object-fit: contain;
-}
-/* Contenedores */
-.double-images,
-.triple-images {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-/* Estilos para los contenedores */
-.double-images {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.triple-images {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-/* Hijos dentro de los contenedores */
-.double-images > *,
-.triple-images > * {
-    min-width: 0;
-}
-
-/* =========================
-VIDEO
-========================= */
-
-.video-box{
-    margin-top:2rem;
-    width:100%;
-    aspect-ratio:16/9;
-    border-radius:24px;
-    overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,.3);
-}
-
-.video-box iframe{
-    width:100%;
-    height:100%;
-    border:none;
-}
-
-/* =========================
-BOTON
-========================= */
-
-.scroll-top{
-    position:fixed;
-    right:20px;
-    bottom:85px;
-    width:55px;
-    height:55px;
-    border:none;
-    border-radius:50%;
-    background:#0ea5e9;
-    color:white;
-    font-size:1.2rem;
-    cursor:pointer;
-    display:none;
-    transition:.3s;
-    z-index:1000;
-}
-
-.scroll-top:hover{
-    transform:scale(1.1);
-}
-
-/* =========================
-FOOTER
-NO TOCAR
-========================= */
-
-footer{
-    padding:3rem 1rem;
-    text-align:center;
-    background:#020617;
-    border-top:1px solid rgba(255,255,255,.05);
-}
-
-#made-with-eXe{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    z-index:9999;
-}
-
-.exe-link{
-    display:flex;
-    align-items:center;
-    gap:.6rem;
-
-    background:rgba(15,23,42,.92);
-    padding:.7rem 1rem;
-
-    border-radius:14px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(10px);
-
-    color:#e2e8f0;
-    text-decoration:none;
-
-    transition:.3s;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-.exe-link:hover{
-    transform:translateY(-4px);
-    border-color:#38bdf8;
-    color:#38bdf8;
-}
-
-.exe-icon{
-    width:20px;
-    height:20px;
-    border-radius:5px;
-    object-fit:cover;
-}
-
-/* =========================
-RESPONSIVE
-========================= */
-
-@media(max-width:900px){
-
-    .double-images,
-    .triple-images{
-        grid-template-columns:1fr;
-    }
-
-    .portada-title{
-        font-size:2.8rem;
-    }
-
-    .section-box{
-        padding:2rem;
-    }
-
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado Romero</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- =========================
-NAVBAR
-========================= -->
+    <header class="header">
 
-<nav class="navbar">
+        <h1 class="logo">
+            <a href="#hero">Supermercado Romero</a>
+        </h1>
 
-    <div class="nav-container">
+        <nav class="nav">
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#ofertas">Ofertas</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
 
-        <div class="logo">
-            Opti OS 11
-        </div>
+    </header>
 
+    <main class="container">
 
-<button class="menu-toggle" id="menuToggle">
-☰
-</button>
-        <div class="nav-links">            
+        <!-- HERO -->
+        <section class="hero" id="hero">
 
-            <a href="#portada">Portada</a>
-            <a href="#introduccion">Introducción</a>
-            <a href="#requisitos">Requisitos</a>
-            <a href="#preparacion">Preparación</a>
-            <a href="#instalacion">Instalación</a>
-            <a href="#particiones">Particiones</a>
-            <a href="#preguntas">Preguntas</a>
-        </div>
+            <img src="img/logo.jpg" alt="Supermercado Romero" >
 
-    </div>
+            <div class="hero-text">
+                <h2>Todo lo que necesita para su hogar lo encuentra aquí</h2>
 
-</nav>
+                <p>
+                    Consulta nuestros productos, descubre nuestras ofertas
+                    y solicita tu domicilio de forma rápida y sencilla.
+                </p>
 
-
-<!-- =========================
-PORTADA
-========================= -->
-
-<section class="manual-section portada" id="portada">
-
-    <div class="portada-content">
-
-        
-
-        <div class="hero-card">
-
-            <p>Ministerio de educación</p>
-            <p>Colegio Secundario de Volcán</p>
-            <p>Materia: Multimedia</p>
-
-            <h1 class="portada-title">
-                instalación de sistema operativo
-            </h1>
-
-            <p>
-                integrantes: Verónica Rodríguez, Katherin Pineda,
-                Alexandra Palacio, Aron Palacio y Jineth Batista
-            </p>
-
-            <br>
-
-            <p>Profesor: Richard Caballero</p>
-            <p>Año: 2026</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-INTRODUCCION
-========================= -->
-
-<section class="manual-section" id="introduccion">
-
-    <div class="container">
-
-        <div class="section-box text-block">
-
-            <h2 class="section-title">
-                Introducción
-            </h2>
-
-            <p>
-                En el laboratorio de informática realizamos la instalación del sistema operativo Windows 11 en una computadora asignada.
-            </p>
-
-            <p>
-                Durante esta practica aprendimos a verificar los requisitos del equipo, preparar el medio de instalación y configurar el arranque desde una memoria USB booteable.
-            </p>
-
-            <p>
-                Este manual explica paso a paso el procedimiento realizado en clases de manera practica e interactiva.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-REQUISITOS
-========================= -->
-
-<section class="manual-section" id="requisitos">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                Verificación de requisitos del sistema
-            </h2>
-
-            <p>
-                Primero revisamos las características de la computadora asignada para verificar si era compatible con Windows 11. para ello ingresamos a: Configuracion-sistema-acerca de
-            </p>
-
-            <div class="requirements-grid">
-
-                <div class="info-card">
-                    <h3>🖱 Procesador</h3>
+                <div class="hero-buttons">
+                    <a href="#productos" class="btn">Ver productos</a>
+                    <a href="#contacto" class="btn">Contáctanos</a>
                 </div>
+            </div>
 
-                <div class="info-card">
-                    <h3>🖱 memoria Ram</h3>
-                </div>
+        </section>
 
-                <div class="info-card">
-                    <h3>🖱 Tipo de sistema</h3>
-                </div>
+        <!-- BENEFICIOS -->
+        <section class="beneficios">
 
-                
+            <h2>¿Por qué elegirnos?</h2>
+            <hr>
+            <div class="contenedor-beneficios">
+
+                <article class="beneficio">
+                    <h3>🥬 Productos Frescos</h3>
+                    <p>Seleccionamos diariamente productos de excelente calidad.</p>
+                </article>
+
+                <article class="beneficio">
+                    <h3>💲 Mejores Precios</h3>
+                    <p>Ofertas y promociones para ayudar al ahorro familiar.</p>
+                </article>
+
+                <article class="beneficio">
+                    <h3>🚚 Domicilio Rápido</h3>
+                    <p>Recibe tus compras cómodamente sin salir de casa.</p>
+                </article>
+
+            </div>
+<br>
+        </section>
+
+        <!-- PRODUCTOS -->
+        <section class="productos" id="productos">
+
+            <h2>Nuestros Productos</h2>
+            <hr>
+            <div class="contenedor-productos">
+
+                <article class="producto">
+                    <img src="img/lacteos.jpg" alt="Productos lácteos">
+                    <h3>Lácteos</h3>
+                    <p>Leche, quesos, yogures y otros productos refrigerados para toda la familia.</p>
+                </article>
+
+                <article class="producto">
+                    <img src="img/carnes.webp" alt="Carnes">
+                    <h3>Carnes</h3>
+                    <p>Carnes de res, pollo y cerdo con altos estándares de calidad.</p>
+                </article>
+
+                <article class="producto">
+                    <img src="img/pasillo-frutas.jpg" alt="Frutas y verduras">
+                    <h3>Frutas y Verduras</h3>
+                    <p>Productos frescos seleccionados diariamente para garantizar calidad y buen sabor.</p>
+                </article>
+
+                <article class="producto">
+                    <img src="img/jugos.jpg" alt="Bebidas">
+                    <h3>Bebidas</h3>
+                    <p>Gran variedad de jugos, refrescos, agua y bebidas energéticas.</p>
+                </article>
+
+                <article class="producto">
+                    <img src="img/limpieza.webp" alt="Productos de limpieza">
+                    <h3>Limpieza</h3>
+                    <p>Todo lo necesario para mantener limpio y organizado tu hogar.</p>
+                </article>
 
             </div>
 
-     
+        </section>
 
-        </div>
+        <!-- OFERTAS -->
+        <section class="ofertas" id="ofertas">
 
-    </div>
+            <h2>Ofertas de la Semana</h2>
+            <hr>
+            <div class="contenedor-ofertas">
 
-</section>
+                <article class="oferta">
+                    <h3>🍎 Frutas</h3>
+                    <p>20% de descuento en frutas seleccionadas.</p>
+                </article>
 
+                <article class="oferta">
+                    <h3>🧴 Limpieza</h3>
+                    <p>Lleva dos productos de limpieza y obtén el tercero con descuento.</p>
+                </article>
 
-<!-- =========================
-PREPARACION
-========================= -->
-
-<section class="manual-section" id="preparacion">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                preparacion para la instalacion
-            </h2>
-
-            <p>
-                Después de verificar los requisitos, realizamos un respaldo de la información importante para evitar la perdida de archivos.
-            </p>
-
-            <br>
-
-            <p>
-                Luego seleccionamos la imagen ISO autorizada de Windows 11 y preparamos la memoria USB booteable para comenzar la instalación.
-            </p>
-
-          
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-INSTALACION
-========================= -->
-
-<section class="manual-section" id="instalacion">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                Pasos para la instalación del Windows 11
-            </h2>
-
-            <p>
-                1-Insertar la USB booteable en la computadora y reiniciamos el equipo.
-            </p>
-
-            <br>
-
-            <p>
-                Luego presionamos repetidamente la tecla F9 para abrir el menu de arranque y seleccionar la memoria USB
-            </p>
-
-            <div class="double-images">
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-1.jpeg" alt="">
-                </div>
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-2.jpeg" alt="">
-                </div>
+                <article class="oferta">
+                    <h3>🥤 Bebidas</h3>
+                    <p>Promociones especiales en bebidas familiares durante toda la semana.</p>
+                </article>
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
+        <!-- NOSOTROS -->
+        <section class="nosotros" id="nosotros">
 
-</section>
-
-
-<!-- =========================
-IDIOMA
-========================= -->
-
-<section class="manual-section">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                2-Seleccionamos el idioma
+            <h2>🏪¿Quiénes Somos?
             </h2>
-
-            <p>Idioma</p>
-            <p>hora</p>
-            <p>tipo de teclado</p>
-
-            <br>
-
+            <hr>
             <p>
-                Luego presionamos siguiente
+                Supermercado Romero es un negocio comprometido con brindar
+                productos de calidad, excelente atención y precios accesibles
+                para las familias de Volcán.
             </p>
 
-            <br>
+            <div class="info-nosotros">
 
-            <p>
-                Después de iniciar desde la USB, apareció la pantalla de instalación de Windows 11 Seleccionamos:
-            </p>
+                <article>
+                    <h3>🎯Misión</h3>
+                    <p>
+                        Ofrecer productos de calidad con un servicio confiable
+                        que facilite las compras de nuestros clientes.
+                    </p>
+                </article>
 
-            <div class="image-placeholder" id="image-step2">
-                <img src="asset/images/step-2.5.jpeg" alt="">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-PARTICIONES
-========================= -->
-
-<section class="manual-section" id="particiones">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                Administracion de particiones
-            </h2>
-
-            <p>
-                Este es el paso tecnico mas importante.
-            </p>
-
-            <br>
-
-            <p>Debemos</p>
-
-            <br>
-
-            <p>
-                1-eliminar todas las particiones existentes de la unidad elegida
-            </p>
-
-            <p>
-                2-Asegurar que quede unicamente “espacio sin asignar en la unidad 0”.
-            </p>
-
-            <p>
-                3-hacer click en siguiente para que el sistema cree automaticamente la estructura necesaria.
-            </p>
-
-            <div class="double-images">
-
-                <div class="image-placeholder">
-                <img src="asset/images/step-3.jpeg" alt="">
-                </div>
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-4.jpeg" alt="">
-                </div>
+                <article>
+                    <h3>🚀VisiónVisión</h3>
+                    <p>
+                        Ser el supermercado preferido de la comunidad por
+                        nuestro compromiso, variedad y atención.
+                    </p>
+                </article>
 
             </div>
 
+        </section>
+
+        <!-- DOMICILIOS -->
+        <section class="domicilios" id="domicilios">
+
+    <h2>🚚 Servicio de Domicilio
+        <hr>
+    </h2>
+            
+    <p>
+        Compra desde la comodidad de tu hogar y recibe tus productos de forma rápida y segura.
+    </p>
+
+    <div class="pasos">
+
+        <div class="paso">
+            <h3>1. Selecciona</h3>
+            <p>Explora los productos disponibles. </p>
         </div>
+
+        <div class="paso">
+            <h3>2. Solicita</h3>
+            <p>Realiza tu pedido mediante la página.</p>
+        </div>
+
+        <div class="paso">
+            <h3>3. Recibe</h3>
+            <p>Un colaborador llevará tu compra hasta tu hogar.</p>
+        </div>
+
+    </div>
+
+    <button type="button" id="btn-domicilios"
+        >Solicitar domicilio
+    </button>
+    <p id="mensaje-domicilio"></p>
+</section>
+
+        <!-- CONTACTO -->
+        <section class="contacto" id="contacto">
+
+    <h2>📞 Contáctanos</h2>
+
+    <p class="descripcion-contacto">
+        ¿Tienes dudas? Escríbenos o visita nuestra sucursal.
+    </p>
+
+    <div class="contenido-contacto">
+
+        <div class="datos-contacto">
+
+            <h3>Información</h3>
+
+            <p>📍 Volcán, Tierras Altas, Chiriquí</p>
+
+            <p>☎ +507 771-0000</p>
+
+            <p>✉ contacto@romero.com.pa</p>
+
+            <p>🕒 Lunes a sábado<br>7:00 a.m. - 9:00 p.m.</p>
+
+        </div>
+
+        <form>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre">
+
+            <label for="correo">Correo</label>
+            <input type="email" id="correo">
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" rows="5"></textarea>
+
+            <button type="submit" id="btn-validacion">
+                Enviar mensaje
+            </button>
+
+            <p id="mensaje-formulario"></p>
+        </form>
 
     </div>
 
 </section>
 
+    </main>
 
-<!-- =========================
-INSTALACION DEL SISTEMA
-========================= -->
+   <footer>
 
-<section class="manual-section">
+    <h3>Supermercado Romero</h3>
 
-    <div class="container">
+    <p>Calidad, variedad y atención para toda la familia.</p>
 
-        <div class="section-box">
+    <p>📍 Volcán, Tierras Altas, Chiriquí</p>
 
-            <h2 class="section-title">
-                Instalacion del sistema
-            </h2>
+    <p>&copy; 2026 Proyecto académico de Multimedia y Desarrollo Web.</p>
 
-            <p>
-                El sistema comenzo a copiar archivos e instalar Windows automaticamente.
-            </p>
-
-            <br>
-
-            <p>
-                Durante este proceso la computadora se reinicio varias veces.
-            </p>
-
-            <div class="triple-images">
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-5.jpeg" alt="">
-                </div>
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-7.jpeg" alt="">
-                </div>
-
-                <div class="image-placeholder">
-                    <img src="asset/images/step-8.jpeg" alt="">
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-CONFIGURACION
-========================= -->
-
-<section class="manual-section">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                configuracion inicial
-            </h2>
-
-            <p>
-                Finalmente configuramos
-            </p>
-
-            <br>
-
-            <p>
-                configuracion post instalacion:
-                Definicion de usuario y red WIFI
-            </p>
-
-            <br>
-
-            <p>
-                Instalación de drivers:
-                Actualización de controladores de hardware.
-            </p>
-
-            <br>
-
-            <p>
-                Software y base:
-                instalacion de Office, navegadores y utilitarios.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-VIDEO
-========================= -->
-
-<section class="manual-section">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                Video tutorial
-            </h2>
-
-            <div class="video-box">
-
-             <iframe width="560" height="315" src="https://www.youtube.com/embed/dFw_ruU7JOw?si=zBc7fRhO44epVqUK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-PREGUNTAS
-========================= -->
-
-<section class="manual-section" id="preguntas">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                preguntas
-            </h2>
-
-            <p>
-                CIERTO O FALSO:
-                La tecla F9 permite abrir al menú de arranque ___
-            </p>
-
-            <br>
-
-            <p>
-                Que herramientas utilizamos para instalar windows?
-            </p>
-
-            <br>
-
-            <p>-memoria USB booteable</p>
-            <p>-Bocina</p>
-            <p>-impresora</p>
-
-            <br>
-
-            <p>
-                -La imagen del sistema operativo utilizada fue una imagen _______.
-            </p>
-
-            <br>
-
-            <p>
-                Que debemos revisar antes de instalar el sistema operativo?
-            </p>
-
-            <p>El color del teclado</p>
-            <p>El fondo de pantalla</p>
-            <p>las características del equipo ✅</p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-CONCLUSION
-========================= -->
-
-<section class="manual-section">
-
-    <div class="container">
-
-        <div class="section-box">
-
-            <h2 class="section-title">
-                Conclusion
-            </h2>
-
-            <p>
-                La practica realizada permitió aprender el proceso correcto de instalación de Windows 11 en una computadora.
-            </p>
-
-            <br>
-
-            <p>
-                Además, comprendimos la importancia de verificar los requisitos del sistema, preparar el medio de instalación y seguir correctamente cada paso para evitar errores durante la instalación.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-FOOTER
-========================= -->
-
-<footer id="siteFooter">
-<div id="siteFooterContent">
-<div id="packageLicense" class="cc cc-by-sa">
-<p>
-<span class="license-label">Licencia: </span>
-<a href="https://creativecommons.org/licenses/by-sa/4.0/" class="license">
-Creative Commons: Reconocimiento - compartir igual 4.0
-</a>
-</p>
-</div>
-</div>
 </footer>
-
-<p id="made-with-eXe">
-
-<a href="https://exelearning.net/" target="_blank" rel="noopener" class="exe-link">
-
-<img
-src="asset/images/favicon.ico"
-alt="eXeLearning"
-class="exe-icon"
->
-
-<span>
-Creado con eXeLearning
-</span>
-
-</a>
-
-</p>
-<!-- =========================
-JAVASCRIPT
-========================= -->
-
-<button class="scroll-top" id="scrollTopBtn">
-↑
-</button>
-
-<script>
-
-/* =========================
-BOTON SUBIR
-========================= */
-
-/* =========================
-MENU HAMBURGUESA
-========================= */
-
-/* =========================
-MENU HAMBURGUESA
-========================= */
-
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.querySelector(".nav-links");
-
-menuToggle.addEventListener("click", function(){
-
-    if(navLinks){
-        navLinks.classList.toggle("active");
-    }
-
-});
-
-const scrollBtn = document.getElementById("scrollTopBtn");
-
-window.addEventListener("scroll", () => {
-
-    if(window.scrollY > 400){
-        scrollBtn.style.display = "block";
-    }else{
-        scrollBtn.style.display = "none";
-    }
-
-});
-
-scrollBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-});
-
-/* =========================
-ANIMACIONES
-========================= */
-
-const sections = document.querySelectorAll(".section-box");
-
-const observer = new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0px)";
-
-        }
-
-    });
-
-},{
-    threshold:0.1
-});
-
-sections.forEach(section=>{
-
-    section.style.opacity = "0";
-    section.style.transform = "translateY(40px)";
-    section.style.transition = "all .8s ease";
-
-    observer.observe(section);
-
-});
-
-/* =========================
-EFECTO NAVBAR
-========================= */
-
-const navbar = document.querySelector(".navbar");
-
-window.addEventListener("scroll",()=>{
-
-    if(window.scrollY > 50){
-
-        navbar.style.background = "rgba(2,6,23,.96)";
-
-    }else{
-
-        navbar.style.background = "rgba(15,23,42,.88)";
-    }
-
-});
-
-</script>
-
+<script src="js/app.js"></script>
 </body>
 </html>
